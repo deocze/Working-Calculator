@@ -64,6 +64,9 @@ calculator.addEventListener("click", (e) => {
     secondNumber = "";
     operator = "";
   }
+  else if (e.target.id == "."){
+    console.log("testing");
+  }
   else if(operator.length == 1 && e.target.id != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
     secondNumber = "";    
