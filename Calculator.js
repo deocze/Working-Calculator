@@ -72,7 +72,7 @@ calculator.addEventListener("click", (e) => {
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
     secondNumber = "";    
     operator = e.target.id;
-    newspan.textContent += ` ${operator} `;    
+    newspan.textContent = `${firstNumber} ${operator} `;    
   } 
   else if(operator.length != 1 && e.target.id != ""){
     operator = e.target.id;
