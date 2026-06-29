@@ -81,7 +81,7 @@ calculator.addEventListener("click", (e) => {
 });
 
 equal.addEventListener("click", (e) => {
-  if (firstNumber != "" || firstNumber == 0 && secondNumber != "" && operator != ""){
+  if ((firstNumber != "" || firstNumber == 0) && secondNumber != "" && operator != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
     
     secondNumber = "";
