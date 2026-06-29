@@ -1,6 +1,6 @@
 let firstNumber = "";
 let secondNumber = "";
-
+let result = "";
 let operator = "";
 function add(num1, num2) {
   let afinal = num1 + num2;
@@ -50,8 +50,17 @@ display.append(newspan);
 calculator.addEventListener("click", (e) => {
   if (e.target.id != "" && Number.isInteger(Number(e.target.id)) == true) {   
     if (operator == ""){
+      if (result != ""){
+        firstNumber = "";
+        newspan.textContent = "";
+        firstNumber += e.target.id;
+        newspan.textContent += e.target.id;
+        result = "";//reset result every time these conditions are met because it is just there to tell us if the equal button was pressed before hand or not
+      }
+      else {
       firstNumber += e.target.id;
       newspan.textContent += e.target.id;
+      }
     }
     else if (operator != ""){
       secondNumber += e.target.id;
@@ -63,6 +72,7 @@ calculator.addEventListener("click", (e) => {
     firstNumber = "";
     secondNumber = "";
     operator = "";
+    result == "";
   }
   else if (e.target.id == "."){
     firstNumber += e.target.id;
@@ -83,11 +93,11 @@ calculator.addEventListener("click", (e) => {
 equal.addEventListener("click", (e) => {
   if ((firstNumber != "" || firstNumber == 0) && secondNumber != "" && operator != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
-    
+    result = firstNumber;
     secondNumber = "";
     operator = "";
 
-    newspan.textContent = firstNumber;
+    newspan.textContent = result;
   }
   else{
     console.log("nah");
