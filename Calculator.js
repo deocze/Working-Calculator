@@ -49,7 +49,7 @@ display.append(newspan);
 
 calculator.addEventListener("click", (e) => {
   if (e.target.id != "" && Number.isInteger(Number(e.target.id)) == true) {   
-    if (operator == ""||e.target.id == "."){
+    if (operator == ""){
       firstNumber += e.target.id;
       newspan.textContent += e.target.id;
     }
@@ -65,7 +65,8 @@ calculator.addEventListener("click", (e) => {
     operator = "";
   }
   else if (e.target.id == "."){
-    console.log("testing");
+    firstNumber += e.target.id;
+    newspan.textContent += e.target.id;
   }
   else if(operator.length == 1 && e.target.id != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
@@ -80,7 +81,7 @@ calculator.addEventListener("click", (e) => {
 });
 
 equal.addEventListener("click", (e) => {
-  if (firstNumber != "" && secondNumber != "" && operator != ""){
+  if (firstNumber != "" || firstNumber == 0 && secondNumber != "" && operator != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
     
     secondNumber = "";
