@@ -74,8 +74,12 @@ calculator.addEventListener("click", (e) => {
     operator = "";
     result == "";
   }
-  else if (e.target.id == "."){
+  else if (e.target.id == "." && operator == ""){
     firstNumber += e.target.id;
+    newspan.textContent += e.target.id;
+  }
+  else if (e.target.id == "." && operator != ""){
+    secondNumber += e.target.id;
     newspan.textContent += e.target.id;
   }
   else if(operator.length == 1 && e.target.id != ""){
