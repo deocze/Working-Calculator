@@ -46,3 +46,11 @@ button:hover{
 html{
   overflow: hidden;
 }
+.backspace{
+  margin-bottom: 2px;
+}
+.backspace{
+  padding-left: 46px;
+  padding-right: 46px;
+  text-align: center;
+}
