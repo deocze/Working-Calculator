@@ -12,6 +12,7 @@ function subtract(num1, num2) {
 }
 function multiply(num1, num2) {
   let mfinal = num1 * num2;
+  console.log(mfinal);
   return mfinal;
 }
 function divide(num1, num2) {
@@ -98,9 +99,10 @@ equal.addEventListener("click", (e) => {
   if ((firstNumber != "" || firstNumber == 0) && secondNumber != "" && operator != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
     result = firstNumber;
+    result = Math.round(result * 100)/100;
     secondNumber = "";
     operator = "";
-
+    
     newspan.textContent = result;
   }
   else{
