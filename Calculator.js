@@ -2,6 +2,7 @@ let firstNumber = "";
 let secondNumber = "";
 let result = "";
 let operator = "";
+
 function add(num1, num2) {
   let afinal = num1 + num2;
   return afinal;
@@ -45,6 +46,7 @@ let calculator = document.querySelector(".container");
 let equal = document.querySelector(".equal");
 let display = document.querySelector(".display");
 let newspan = document.createElement("span");
+let backspace = document.querySelector(".backspace");
 newspan.id = "spanning";
 display.append(newspan);
 
@@ -102,11 +104,27 @@ equal.addEventListener("click", (e) => {
     result = Math.round(result * 100)/100;
     secondNumber = "";
     operator = "";
-    
+
     newspan.textContent = result;
   }
   else{
     console.log("nah");
+  }
+}
+)
+backspace.addEventListener("click", (e) => {
+  if (secondNumber == "" && operator != ""){ 
+    operator = "";
+    newspan.textContent = firstNumber;    
+  }
+  else if (secondNumber == ""){
+    firstNumber = String(firstNumber).slice(0,(String(firstNumber).length) - 1);
+    newspan.textContent = firstNumber;
+  }
+  else{
+    secondNumber = secondNumber.slice(0,(secondNumber.length) - 1);
+    result = ((newspan.textContent).slice(0,(newspan.textContent).length - 1));
+    newspan.textContent = result;    
   }
 
 })
