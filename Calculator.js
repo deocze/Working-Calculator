@@ -47,22 +47,26 @@ let equal = document.querySelector(".equal");
 let display = document.querySelector(".display");
 let newspan = document.createElement("span");
 let backspace = document.querySelector(".backspace");
+
 newspan.id = "spanning";
+
 display.append(newspan);
+
 
 calculator.addEventListener("click", (e) => {
   if (e.target.id != "" && Number.isInteger(Number(e.target.id)) == true) {   
-    if (operator == ""){
-      if (result != ""){
-        firstNumber = "";
-        newspan.textContent = "";
-        firstNumber += e.target.id;
-        newspan.textContent += e.target.id;
-        result = "";//reset result every time these conditions are met because it is just there to tell us if the equal button was pressed before hand or not
-      }
-      else {
+    if (Number.isInteger(result) === true){
+      firstNumber = "";
+      newspan.textContent = "";
       firstNumber += e.target.id;
       newspan.textContent += e.target.id;
+      result = "";//reset result every time these conditions are met because it is just there to tell us if the equal button was pressed before hand or not
+    }    
+    else if (operator == ""){
+      {
+      firstNumber += e.target.id;
+      newspan.textContent += e.target.id;
+      console.log (newspan.textContent); 
       }
     }
     else if (operator != ""){
