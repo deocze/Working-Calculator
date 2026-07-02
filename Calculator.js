@@ -78,12 +78,16 @@ calculator.addEventListener("click", (e) => {
     result == "";
   }
   else if (e.target.id == "." && operator == ""){
-    firstNumber += e.target.id;
-    newspan.textContent += e.target.id;
+    if (firstNumber % 1 === 0 && firstNumber.slice(-1) != "."){ 
+      firstNumber += e.target.id;
+      newspan.textContent += e.target.id;
+    }
   }
   else if (e.target.id == "." && operator != ""){
-    secondNumber += e.target.id;
-    newspan.textContent += e.target.id;
+    if (secondNumber % 1 === 0 && secondNumber.slice(-1) != "."){
+      secondNumber += e.target.id;
+      newspan.textContent += e.target.id;
+    }
   }
   else if(operator.length == 1 && e.target.id != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
