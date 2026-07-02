@@ -136,3 +136,47 @@ backspace.addEventListener("click", (e) => {
   }
 
 })
+
+document.addEventListener("keyup", (e) => {
+    let keyPressed = 0;
+    if (e.key == 1){
+        keyPressed = 1;
+    }
+    else if (e.key === 2){
+        keyPressed = 2;
+    } 
+    if (e.key === 3){
+        keyPressed = 3;
+    }
+    if (e.key === 4){
+        keyPressed = 4;
+    }
+    if (e.key === 5){
+        keyPressed = 5;
+    }
+    if (e.key === 6){
+        keyPressed = 6;
+    }
+    if (e.key === 7){
+        keyPressed = 7;
+    }
+    if (e.key === 8){
+        keyPressed = 8;
+    }
+    if (e.key === 9){
+        keyPressed = 9;
+    }
+    if (e.key === 0){
+        keyPressed = 0;
+    }
+    if (e.key === "+"){
+        keyPressed = "+";
+    }
+    if (e.key === 1){
+        keyPressed = 1;
+    }
+    if (e.key === 1){
+        keyPressed = 1;
+    }
+    console.log(keyPressed);
+});
