@@ -52,57 +52,62 @@ newspan.id = "spanning";
 
 display.append(newspan);
 
-
-calculator.addEventListener("click", (e) => {
-  if (e.target.id != "" && Number.isInteger(Number(e.target.id)) == true) {   
-    if (Number.isInteger(result) === true){
-      firstNumber = "";
-      newspan.textContent = "";
-      firstNumber += e.target.id;
-      newspan.textContent += e.target.id;
-      result = "";//reset result every time these conditions are met because it is just there to tell us if the equal button was pressed before hand or not
-    }    
+function calculating(button){
+    if (button != "" && Number.isInteger(Number(button)) == true) {   
+      if (Number.isInteger(result) === true && operator == ""){
+        firstNumber = "";
+        newspan.textContent = "";
+        firstNumber += button;
+        newspan.textContent += button;
+        operator = "";
+        result = "";//reset result every time these conditions are met because it is just there to tell us if the equal button was pressed before hand or not
+      }    
     else if (operator == ""){
       {
-      firstNumber += e.target.id;
-      newspan.textContent += e.target.id;
+      firstNumber += button;
+      newspan.textContent += button;
       console.log (newspan.textContent); 
       }
     }
     else if (operator != ""){
-      secondNumber += e.target.id;
-      newspan.textContent += e.target.id;
+      secondNumber += button;
+      newspan.textContent += button;
     }
   }
-  else if (e.target.id == "c"){
+  else if (button == "c"){
     newspan.textContent = "";
     firstNumber = "";
     secondNumber = "";
     operator = "";
     result == "";
   }
-  else if (e.target.id == "." && operator == ""){
+  else if (button == "." && operator == ""){
     if (firstNumber % 1 === 0 && firstNumber.slice(-1) != "."){ 
-      firstNumber += e.target.id;
-      newspan.textContent += e.target.id;
+      firstNumber += button;
+      newspan.textContent += button;
     }
   }
-  else if (e.target.id == "." && operator != ""){
+  else if (button == "." && operator != ""){
     if (secondNumber % 1 === 0 && secondNumber.slice(-1) != "."){
-      secondNumber += e.target.id;
-      newspan.textContent += e.target.id;
+      secondNumber += button;
+      newspan.textContent +=  button;
     }
   }
-  else if(operator.length == 1 && e.target.id != ""){
+  else if(operator.length == 1 && button != ""){
     firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
     secondNumber = "";    
-    operator = e.target.id;
+    operator = button;
     newspan.textContent = `${firstNumber} ${operator} `;    
   } 
-  else if(operator.length != 1 && e.target.id != ""){
-    operator = e.target.id;
+  else if(operator.length != 1 && button != ""){
+    operator = button;
     newspan.textContent += ` ${operator} `;
   }
+}
+
+calculator.addEventListener("click", (e) => {
+  let B = e.target.id;
+  calculating(B);
 });
 
 equal.addEventListener("click", (e) => {
@@ -142,40 +147,40 @@ document.addEventListener("keyup", (e) => {
     if (e.key == 1){
         keyPressed = 1;
     }
-    else if (e.key === 2){
+    else if (e.key == 2){
         keyPressed = 2;
     } 
-    if (e.key === 3){
+    if (e.key == 3){
         keyPressed = 3;
     }
-    if (e.key === 4){
+    if (e.key == 4){
         keyPressed = 4;
     }
-    if (e.key === 5){
+    if (e.key == 5){
         keyPressed = 5;
     }
-    if (e.key === 6){
+    if (e.key == 6){
         keyPressed = 6;
     }
-    if (e.key === 7){
+    if (e.key == 7){
         keyPressed = 7;
     }
-    if (e.key === 8){
+    if (e.key == 8){
         keyPressed = 8;
     }
-    if (e.key === 9){
+    if (e.key == 9){
         keyPressed = 9;
     }
-    if (e.key === 0){
+    if (e.key == 0){
         keyPressed = 0;
     }
-    if (e.key === "+"){
+    if (e.key == "+"){
         keyPressed = "+";
     }
-    if (e.key === 1){
+    if (e.key == 1){
         keyPressed = 1;
     }
-    if (e.key === 1){
+    if (e.key == 1){
         keyPressed = 1;
     }
     console.log(keyPressed);
