@@ -13,7 +13,6 @@ function subtract(num1, num2) {
 }
 function multiply(num1, num2) {
   let mfinal = num1 * num2;
-  console.log(mfinal);
   return mfinal;
 }
 function divide(num1, num2) {
@@ -104,17 +103,10 @@ function calculating(button){
     newspan.textContent += ` ${operator} `;
   }
 }
-
-calculator.addEventListener("click", (e) => {
-  let B = e.target.id;
-  calculating(B);
-});
-
-equal.addEventListener("click", (e) => {
+function equalFunc(){
   if ((firstNumber != "" || firstNumber == 0) && secondNumber != "" && operator != ""){
-    firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator));
-    result = firstNumber;
-    result = Math.round(result * 100)/100;
+    firstNumber = (operate(Number(firstNumber), Number(secondNumber), operator)); 
+    result = Math.round(firstNumber * 100)/100;
     secondNumber = "";
     operator = "";
 
@@ -124,8 +116,7 @@ equal.addEventListener("click", (e) => {
     console.log("nah");
   }
 }
-)
-backspace.addEventListener("click", (e) => {
+function backspaceFunc(){
   if (secondNumber == "" && operator != ""){ 
     operator = "";
     newspan.textContent = firstNumber;    
@@ -139,49 +130,74 @@ backspace.addEventListener("click", (e) => {
     result = ((newspan.textContent).slice(0,(newspan.textContent).length - 1));
     newspan.textContent = result;    
   }
+}
+calculator.addEventListener("click", (e) => {
+  let numorsymbol = e.target.id;
+  calculating(numorsymbol);
+});
 
+equal.addEventListener("click", (e) => {
+  equalFunc();
+})
+backspace.addEventListener("click", (e) => {
+  backspaceFunc();
 })
 
-document.addEventListener("keyup", (e) => {
-    let keyPressed = 0;
+document.addEventListener("keydown", (e) => {
+    let keyPressed = "";
     if (e.key == 1){
-        keyPressed = 1;
+      keyPressed = 1;
     }
     else if (e.key == 2){
-        keyPressed = 2;
+      keyPressed = 2;
     } 
-    if (e.key == 3){
-        keyPressed = 3;
+    else if (e.key == 3){
+      keyPressed = 3;
     }
-    if (e.key == 4){
-        keyPressed = 4;
+    else if (e.key == 4){
+      keyPressed = 4;
     }
-    if (e.key == 5){
-        keyPressed = 5;
+    else if (e.key == 5){
+      keyPressed = 5;
     }
-    if (e.key == 6){
-        keyPressed = 6;
+    else if (e.key == 6){
+      keyPressed = 6;
     }
-    if (e.key == 7){
-        keyPressed = 7;
+    else if (e.key == 7){
+      keyPressed = 7;
     }
-    if (e.key == 8){
-        keyPressed = 8;
+    else if (e.key == 8){
+      keyPressed = 8;
     }
-    if (e.key == 9){
-        keyPressed = 9;
+    else if (e.key == 9){
+      keyPressed = 9;
     }
-    if (e.key == 0){
-        keyPressed = 0;
+    else if (e.key == 0){
+      keyPressed = "0";
     }
-    if (e.key == "+"){
-        keyPressed = "+";
+    else if (e.key == "+"){
+      keyPressed = "+";
     }
-    if (e.key == 1){
-        keyPressed = 1;
+    else if (e.key == "-"){
+      keyPressed = "-";
     }
-    if (e.key == 1){
-        keyPressed = 1;
+    else if (e.key == "/"){
+      keyPressed = "/";
     }
-    console.log(keyPressed);
+    else if (e.key == "*"){
+      keyPressed = "*"
+    }
+    else if (e.key == "."){
+      keyPressed = "."
+    }
+    else if (e.key == "c"){
+      keyPressed = "c"
+    }   
+    else if (e.key == "Enter"){
+      equalFunc();
+    }
+    else if (e.key == "Backspace"){
+      backspaceFunc();
+    }
+    calculating(keyPressed);
 });
